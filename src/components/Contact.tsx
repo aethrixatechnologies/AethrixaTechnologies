@@ -59,7 +59,15 @@ export default function Contact() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    
+    if (name === 'phone') {
+      const numericValue = value.replace(/\D/g, '');
+      if (numericValue.length > 10) return;
+      setForm((prev) => ({ ...prev, [name]: numericValue }));
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }));
+    }
+
     // Clear validation error when typing
     if (errors[name as keyof FormState]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
@@ -74,6 +82,14 @@ export default function Contact() {
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
       nextErrors.email = "Please input a valid email structured address.";
     }
+    
+    const phoneDigits = form.phone.replace(/\D/g, '');
+    if (!form.phone.trim()) {
+      nextErrors.phone = "Phone field is required.";
+    } else if (phoneDigits.length < 10) {
+      nextErrors.phone = "Phone number must be at least 10 digits.";
+    }
+
     if (!form.projectDetails.trim()) nextErrors.projectDetails = "Please specify project details.";
     if (!form.budgetRange) nextErrors.budgetRange = "Please select a budget range.";
     if (!form.timeline) nextErrors.timeline = "Please select a targeted launching timeline.";
@@ -102,7 +118,7 @@ export default function Contact() {
           replyto: form.email,
           "Full Name": form.name,
           "Email Address": form.email,
-          "Phone": form.phone || "Not provided",
+          "Phone": form.phone,
           "Company": form.company || "Not provided",
           "Project Details": form.projectDetails,
           "Budget Specs": form.budgetRange,
@@ -250,16 +266,20 @@ export default function Contact() {
                     <div className="space-y-1.5 text-left">
                       <label className="text-[10px] font-extrabold uppercase font-mono tracking-wider text-slate-400 flex items-center gap-1">
                         <Phone className="w-3 h-3 text-brand-blue" />
-                        <span>Phone (Optional)</span>
+                        <span>Phone *</span>
                       </label>
                       <input
                         type="text"
                         name="phone"
                         value={form.phone}
                         onChange={handleInputChange}
-                        placeholder="e.g. +1 (555) 0192"
-                        className="w-full px-4 py-3 border border-slate-205 rounded-xl bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple"
+                        placeholder="e.g. 9876543210"
+                        maxLength={10}
+                        className={`w-full px-4 py-3 rounded-xl border bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 ${
+                          errors.phone ? "border-red-400 focus:ring-red-400" : "border-slate-205 focus:border-brand-purple focus:ring-brand-purple"
+                        }`}
                       />
+                      {errors.phone && <p className="text-[9px] font-mono text-red-500 font-bold">{errors.phone}</p>}
                     </div>
 
                     {/* Company field */}
