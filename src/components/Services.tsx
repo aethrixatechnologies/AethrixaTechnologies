@@ -164,9 +164,7 @@ export default function Services() {
       id="services" 
       className="py-16 md:py-24 px-4 md:px-12 lg:px-24 bg-transparent relative w-full"
     >
-      {/* Background decoration elements */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-cyan-100/30 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-indigo-100/20 rounded-full blur-[140px] pointer-events-none" />
+      {/* Background decoration elements removed */}
 
       <div className="max-w-7xl mx-auto text-center relative z-10 w-full flex flex-col items-center">
         {/* Accent Tag */}
@@ -175,10 +173,10 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-white dark:bg-slate-900 mb-4 shadow-sm"
+          className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-slate-900 mb-4 shadow-sm"
         >
           <Sparkles className="w-3.5 h-3.5 text-indigo-500 animate-spin" />
-          <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-500 dark:text-slate-400">
+          <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-400">
             AETHRIXA TECHNICAL CAPABILITIES
           </span>
         </motion.div>
@@ -189,7 +187,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="font-display font-black text-3xl md:text-5xl text-slate-800 dark:text-slate-100 tracking-tight mb-4 max-w-2xl"
+          className="font-display font-black text-3xl md:text-5xl text-slate-100 tracking-tight mb-4 max-w-2xl"
         >
           Complete Suite of Intelligent Digital Architectures.
         </motion.h2>
@@ -200,21 +198,21 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="font-sans text-slate-600 dark:text-slate-300 text-base md:text-lg max-w-xl mb-12"
+          className="font-sans text-slate-300 text-base md:text-lg max-w-xl mb-12"
         >
           From advanced artificial intelligence pipelines to enterprise software development and market-conquering digital campaigns.
         </motion.p>
 
         {/* Navigation Category Filter Selector */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-700/50 max-w-4xl">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 bg-slate-900/80 backdrop-blur-sm p-1.5 rounded-2xl border border-slate-800/80 max-w-4xl shadow-xl">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id as any)}
               className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.id
-                  ? "bg-slate-900 text-white shadow-md shadow-slate-900/10 dark:shadow-black/30"
-                  : "text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 dark:text-slate-50 hover:bg-white dark:bg-slate-900/60"
+                  ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-500/20"
+                  : "text-slate-600 hover:text-white dark:hover:text-slate-50 dark:hover:text-slate-50 hover:bg-slate-900/60"
               }`}
             >
               {cat.name}
@@ -239,7 +237,7 @@ export default function Services() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.2, delay: service_idx * 0.04 }}
-                  className="glass-card glass-card-hover p-6 rounded-2xl border border-white/60 dark:border-slate-700/60 bg-white dark:bg-slate-900/50 text-left flex flex-col justify-between relative overflow-hidden group min-h-[220px]"
+                  className="glass-card glass-card-hover p-6 rounded-2xl border border-slate-700/60 bg-slate-900/50 text-left flex flex-col justify-between relative overflow-hidden group min-h-[220px]"
                 >
                   {/* Subtle corner light gradient glow */}
                   <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-brand-blue/10 to-brand-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-bl-3xl" />
@@ -258,12 +256,12 @@ export default function Services() {
                     </div>
 
                     {/* Headline */}
-                    <h3 className="font-display font-bold text-slate-800 dark:text-slate-100 text-lg mb-2 leading-snug group-hover:text-brand-purple transition-colors">
+                    <h3 className="font-display font-bold text-slate-100 text-lg mb-2 leading-snug group-hover:text-brand-purple transition-colors">
                       {service.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="font-sans text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+                    <p className="font-sans text-slate-400 text-xs leading-relaxed">
                       {service.description}
                     </p>
                   </div>

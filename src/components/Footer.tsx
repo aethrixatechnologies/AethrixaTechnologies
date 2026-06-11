@@ -7,7 +7,11 @@ export default function Footer() {
     e.preventDefault();
     const targetElement = document.querySelector(href);
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(targetElement);
+      } else {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -25,8 +29,7 @@ export default function Footer() {
       <div className="absolute top-0 right-1/4 w-80 h-80 bg-brand-blue/10 rounded-full blur-[110px] pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-96 h-96 bg-brand-purple/5 rounded-full blur-[130px] pointer-events-none" />
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
 
       <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col">
         {/* Upper Columns Grid */}
@@ -124,7 +127,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright row with Glowing Pulsing Divider track */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-slate-500 dark:text-slate-400 gap-4">
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-slate-400 gap-4">
           <div className="flex items-center gap-1.5 font-bold">
             <div className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
             <span>AETHRIXA-PRO NETWORKS OPERATIONAL: OK 99.9% UPTIME</span>

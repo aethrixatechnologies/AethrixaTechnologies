@@ -90,26 +90,24 @@ export default function Testimonials() {
       id="testimonials" 
       className="py-16 md:py-24 px-4 md:px-12 lg:px-24 bg-transparent relative w-full overflow-hidden"
     >
-      {/* Decorative Aurora lights */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-cyan-100/30 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-violet-150/40 rounded-full blur-[130px] pointer-events-none" />
+      {/* Decorative Aurora lights removed */}
 
       <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10 w-full text-center">
         {/* Accent Tag */}
-        <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-white dark:bg-slate-900 mb-4 shadow-sm">
+        <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-slate-900 mb-4 shadow-sm">
           <MessageSquare className="w-3.5 h-3.5 text-brand-purple fill-brand-purple/10" />
-          <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-500 dark:text-slate-400">
+          <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-400">
             CLIENT COGNITIVE VERIFICATION
           </span>
         </div>
 
         {/* Headline */}
-        <h2 className="font-display font-black text-3xl md:text-5xl text-slate-800 dark:text-slate-100 tracking-tight mb-4 max-w-2xl">
+        <h2 className="font-display font-black text-3xl md:text-5xl text-slate-100 tracking-tight mb-4 max-w-2xl">
           Don't Take Our Word For It. Read The Feedback.
         </h2>
 
         {/* Subtext */}
-        <p className="font-sans text-slate-600 dark:text-slate-300 text-base md:text-lg max-w-xl mb-16">
+        <p className="font-sans text-slate-300 text-base md:text-lg max-w-xl mb-16">
           Over 50+ businesses have accelerated their operational capacity and catalyzed digital outcomes under our engineering care.
         </p>
 
@@ -123,7 +121,7 @@ export default function Testimonials() {
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.96, x: -25 }}
               transition={{ duration: 0.45 }}
-              className="w-full glass-card border border-white/80 p-8 md:p-12 rounded-3xl shadow-xl bg-white dark:bg-slate-900/70 flex flex-col md:flex-row gap-8 items-center text-left relative"
+              className="w-full glass-card border border-slate-700/50 p-8 md:p-12 rounded-3xl shadow-xl bg-slate-900/70 flex flex-col md:flex-row gap-8 items-center text-left relative"
             >
               {/* Star graphics banner */}
               <div className="absolute top-6 right-8 flex gap-1 text-amber-400">
@@ -139,7 +137,7 @@ export default function Testimonials() {
                   {testimonials[activeIdx].initials}
                 </div>
                 {/* Sync check */}
-                <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-lg bg-emerald-500 border-2 border-white flex items-center justify-center text-white shadow">
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-lg bg-emerald-500 border-2 border-slate-800 flex items-center justify-center text-white shadow">
                   <UserCheck className="w-3.5 h-3.5" />
                 </div>
               </div>
@@ -151,13 +149,13 @@ export default function Testimonials() {
                 </span>
                 
                 {/* Feedback Quote */}
-                <p className="font-sans text-slate-700 dark:text-slate-200 italic text-sm md:text-base leading-relaxed font-medium">
+                <p className="font-sans text-slate-200 italic text-sm md:text-base leading-relaxed font-medium">
                   "{testimonials[activeIdx].feedback}"
                 </p>
 
                 {/* Sub-label profile details */}
-                <div className="border-t border-slate-100 dark:border-slate-800 pt-4 flex flex-col">
-                  <span className="font-display font-extrabold text-slate-800 dark:text-slate-100 text-sm">
+                <div className="border-t border-slate-800 pt-4 flex flex-col">
+                  <span className="font-display font-extrabold text-slate-100 text-sm">
                     {testimonials[activeIdx].name}
                   </span>
                   <span className="text-[10px] font-bold text-brand-purple tracking-wide font-mono mt-0.5">
@@ -173,7 +171,7 @@ export default function Testimonials() {
           <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-3 h-12">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 hover:border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 dark:bg-slate-900/50 transition-colors shadow-sm cursor-pointer"
+              className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-200 hover:border-slate-600 text-slate-200 flex items-center justify-center hover:bg-transparent dark:hover:bg-slate-900/50 dark:hover:bg-slate-900/50 transition-colors shadow-sm cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
@@ -185,7 +183,7 @@ export default function Testimonials() {
 
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 hover:border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-800 dark:bg-slate-900/50 transition-colors shadow-sm cursor-pointer"
+              className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-200 hover:border-slate-600 text-slate-200 flex items-center justify-center hover:bg-transparent dark:hover:bg-slate-900/50 dark:hover:bg-slate-900/50 transition-colors shadow-sm cursor-pointer"
             >
               <ArrowRight className="w-4 h-4" />
             </button>

@@ -61,15 +61,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, y: -40 }}
       transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900/50 overflow-hidden"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-b from-[#0A1128] to-[#04060A] overflow-hidden"
     >
-      {/* Decorative Pastel Background Blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-200/40 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-200/40 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-3xl" />
+      {/* Glowing radial gradient in the center */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00F0FF]/10 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
 
       <div className="relative z-10 w-full max-w-lg px-6 flex flex-col items-center">
         {/* Animated Digital Network Molecule */}
@@ -78,21 +75,21 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-            className="absolute inset-0 rounded-full border-2 border-dashed border-sky-300/60"
+            className="absolute inset-0 rounded-full border-2 border-dashed border-[#00F0FF]/60"
           />
 
-          {/* Golden/Purple Glowing Orbit Node Circle */}
+          {/* Glowing Orbit Node Circle */}
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
-            className="absolute w-24 h-24 rounded-full border border-violet-300/40"
+            className="absolute w-24 h-24 rounded-full border border-[#00F0FF]/40"
           />
 
           {/* Central Animated Core */}
           <motion.div
             animate={{ scale: [1, 1.15, 1] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-16 h-16 rounded-full bg-gradient-to-tr from-brand-blue to-brand-purple flex items-center justify-center shadow-lg shadow-indigo-200"
+            className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#00F0FF] to-[#D500F9] flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.5)]"
           >
             <Network className="w-8 h-8 text-white animate-pulse" />
           </motion.div>
@@ -114,9 +111,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                   duration: 3 + idx,
                   ease: "easeInOut",
                 }}
-                className="absolute w-3.5 h-3.5 rounded-full bg-cyan-400 border border-white shadow-sm flex items-center justify-center"
+                className="absolute w-3.5 h-3.5 rounded-full bg-[#00F0FF] shadow-[0_0_10px_rgba(0,240,255,0.8)] flex items-center justify-center"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-slate-900" />
+                <div className="w-1.5 h-1.5 rounded-full bg-transparent" />
               </motion.div>
             );
           })}
@@ -124,7 +121,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
 
         {/* Cinematic Subtitles Transition */}
-        <div className="h-16 flex items-center justify-center mt-4 mb-8 text-center">
+        <div className="h-[140px] sm:h-[100px] md:h-16 flex items-center justify-center mt-4 mb-8 text-center">
           <AnimatePresence mode="wait">
             {phase === 0 && (
               <motion.p
@@ -133,9 +130,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.4 }}
-                className="font-sans font-medium text-slate-700 dark:text-slate-200 text-lg flex items-center gap-2"
+                className="font-sans font-medium text-white text-lg flex items-center gap-2"
               >
-                <Sparkles className="w-5 h-5 text-indigo-500 animate-spin" />
+                <Sparkles className="w-5 h-5 text-[#00F0FF] animate-spin" />
                 Welcome to Aethrixa Technologies
               </motion.p>
             )}
@@ -146,7 +143,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="font-sans text-brand-indigo font-bold text-lg"
+                className="font-sans text-white font-bold text-lg"
               >
                 We Build Intelligent Digital Experiences
               </motion.p>
@@ -157,7 +154,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                 key="p2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="flex flex-wrap justify-center gap-3 text-xs md:text-sm"
+                className="flex flex-wrap justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs md:text-sm"
               >
                 {checkmarks.map((item, idx) => {
                   const isActive = checkmarkIndex >= idx;
@@ -170,15 +167,15 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                           ? { scale: 1, opacity: 1 }
                           : { scale: 0.9, opacity: 0.4 }
                       }
-                      className={`flex items-center gap-1.5 px-3 py-1 rounded-full border transition-all duration-300 ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-1.5 rounded-full border transition-all duration-300 ${
                         isActive
-                          ? "bg-white dark:bg-slate-900 border-indigo-200 text-slate-800 dark:text-slate-100 font-medium shadow-sm"
-                          : "border-slate-200 dark:border-slate-700 text-slate-400"
+                          ? "bg-[#1A1E29]/80 border-[#00F0FF] text-white font-medium shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                          : "border-slate-700 bg-transparent text-slate-400"
                       }`}
                     >
                       <CheckCircle2
                         className={`w-4 h-4 transition-colors ${
-                          isActive ? "text-cyan-500" : "text-slate-300"
+                          isActive ? "text-[#00FFFF]" : "text-slate-600"
                         }`}
                       />
                       <span>{item}</span>
@@ -191,19 +188,19 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         </div>
 
         {/* Glassmorphic Progress Container */}
-        <div className="w-full bg-slate-200 dark:bg-slate-700/50 rounded-full h-2.5 p-0.5 overflow-hidden border border-white/80 shadow-inner">
+        <div className="w-full bg-[#1A1E29] rounded-full h-2.5 p-0.5 overflow-hidden border border-[#00F0FF]/20 shadow-inner">
           <motion.div
-            className="h-full bg-gradient-to-r from-brand-blue via-brand-indigo to-brand-purple rounded-full relative"
+            className="h-full bg-gradient-to-r from-[#00F0FF] to-[#D500F9] rounded-full relative shadow-[0_0_15px_rgba(0,240,255,0.5)]"
             style={{ width: `${progress}%` }}
           >
             {/* Pulsing Light Glow at progress head */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white dark:bg-slate-900 shadow-md border border-cyan-400 animate-ping" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-transparent shadow-[0_0_10px_#fff] animate-ping" />
           </motion.div>
         </div>
 
         {/* Digital Percentage Label */}
-        <motion.div className="mt-4 flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-400">
-          <Cpu className="w-3.5 h-3.5 text-brand-blue animate-spin" />
+        <motion.div className="mt-4 flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-[#00F0FF]">
+          <Cpu className="w-3.5 h-3.5 text-[#00F0FF] animate-spin" />
           <span>INITIALIZING COGNITIVE STREAM: {progress}%</span>
         </motion.div>
       </div>
@@ -211,10 +208,10 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       {/* Tech Spec Bottom Labels */}
       <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] font-mono text-slate-400">
         <div className="flex items-center gap-1">
-          <ShieldCheck className="w-3.5 h-3.5 text-cyan-500" />
-          <span>AETHRIXA OS v4.11_SECURE</span>
+          <ShieldCheck className="w-3.5 h-3.5 text-[#00F0FF]" />
+          <span className="text-white">AETHRIXA OS v4.11_SECURE</span>
         </div>
-        <span>UTC: {new Date().toISOString().substring(0, 10)}</span>
+        <span className="text-white">UTC: {new Date().toISOString().substring(0, 10)}</span>
       </div>
     </motion.div>
   );

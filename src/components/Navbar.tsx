@@ -71,22 +71,46 @@ export default function Navbar() {
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.classList.add("overflow-hidden");
+      if ((window as any).lenis) {
+        (window as any).lenis.stop();
+      }
     } else {
       document.body.classList.remove("overflow-hidden");
+      if ((window as any).lenis) {
+        (window as any).lenis.start();
+      }
       setOpenSubmenu(null);
     }
     return () => {
       document.body.classList.remove("overflow-hidden");
+      if ((window as any).lenis) {
+        (window as any).lenis.start();
+      }
     };
   }, [mobileMenuOpen]);
 
   const handleScrollClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    
+    // Start lenis immediately so scrollTo works
+    if ((window as any).lenis) {
+      (window as any).lenis.start();
+    }
+    
     setMobileMenuOpen(false);
+    document.body.classList.remove("overflow-hidden");
+    
     const id = href.replace("#", "");
     const targetElement = document.getElementById(id);
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+      // Small delay to ensure state updates and DOM is ready
+      setTimeout(() => {
+        if ((window as any).lenis) {
+          (window as any).lenis.scrollTo(targetElement, { offset: -100 });
+        } else {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 50);
       setActiveSection(id);
     }
   };
@@ -97,11 +121,11 @@ export default function Navbar() {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
-        className={`w-full transition-all duration-500 pointer-events-auto relative border ${
+        className={`w-full transition-[background-color,border-radius,box-shadow,border-color,max-width,padding,backdrop-filter] duration-500 pointer-events-auto relative border ${
           mobileMenuOpen
-            ? "max-w-5xl rounded-3xl border-slate-200/50 bg-white/95 backdrop-blur-xl shadow-2xl py-3 px-4 sm:px-6"
+            ? "max-w-5xl rounded-3xl border-white/10 bg-[#0A1128]/95 backdrop-blur-xl shadow-2xl py-3 px-4 sm:px-6"
             : scrolled
-            ? "max-w-5xl rounded-full border-slate-200/50 bg-white/75 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(30,41,59,0.12),0_0_15px_-3px_rgba(99,102,241,0.06)] py-2 px-4 sm:px-6"
+            ? "max-w-5xl rounded-full border-white/10 bg-[#0A1128]/75 backdrop-blur-xl shadow-[0_12px_40px_-12px_rgba(0,240,255,0.12),0_0_15px_-3px_rgba(0,240,255,0.06)] py-2 px-4 sm:px-6"
             : "max-w-7xl rounded-[2rem] border-transparent py-3 px-4 sm:px-6 md:px-8 bg-transparent"
         }`}
       >
@@ -117,12 +141,12 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group"
           >
             <div className="flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-105">
-              <img src="/logo.png" alt="Company Logo" className="h-12 sm:h-16 w-auto object-contain drop-shadow-sm invert" />
+              <img src="/logo.png" alt="Company Logo" className="h-12 sm:h-16 w-auto object-contain drop-shadow-sm invert dark:invert-0" />
             </div>
           </a>
 
           {/* Desktop Navigation Link Cluster with Magnetic Sliding Background Pill */}
-          <nav className="hidden 2xl:flex items-center gap-0.5 bg-slate-100/55 p-1 rounded-full border border-slate-200/40 relative">
+          <nav className="hidden 2xl:flex items-center gap-0.5 bg-white/5 p-1 rounded-full border border-white/10 relative">
             {navLinks.map((link) => {
               const cleanedId = link.href.replace("#", "");
               const isActive = activeSection === cleanedId;
@@ -132,7 +156,7 @@ export default function Navbar() {
                     href={link.href}
                     onClick={(e) => handleScrollClick(e, link.href)}
                     className={`px-3.5 py-1.5 rounded-full text-[11px] font-bold transition-all duration-300 relative inline-flex items-center gap-1 ${
-                      isActive ? "text-indigo-600 font-extrabold" : "text-slate-500 hover:text-slate-800"
+                      isActive ? "text-[#00F0FF] font-extrabold" : "text-slate-400 hover:text-white"
                     }`}
                   >
                     {/* Sliding capsule indicator */}
@@ -140,7 +164,7 @@ export default function Navbar() {
                       <motion.div
                         layoutId="active-nav-capsule"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                        className="absolute inset-0 bg-white rounded-full shadow-[0_2px_8px_rgba(99,102,241,0.08),0_1px_2px_rgba(99,102,241,0.03)] border border-slate-100"
+                        className="absolute inset-0 bg-[#00F0FF]/10 rounded-full shadow-[0_2px_8px_rgba(0,240,255,0.08),0_1px_2px_rgba(0,240,255,0.03)] border border-[#00F0FF]/30"
                       />
                     )}
                     <span className="relative z-10">{link.name}</span>
@@ -154,13 +178,13 @@ export default function Navbar() {
                   {/* Desktop Dropdown */}
                   {link.submenu && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                      <div className="bg-white rounded-2xl shadow-xl shadow-slate-900/5 border border-slate-100 p-2 min-w-[200px] flex flex-col gap-1">
+                      <div className="bg-[#1A1E29]/95 backdrop-blur-md rounded-2xl shadow-xl shadow-black/40 border border-white/10 p-2 min-w-[200px] flex flex-col gap-1">
                         {link.submenu.map((subItem) => (
                           <a
                             key={subItem.name}
                             href={subItem.href}
                             onClick={(e) => handleScrollClick(e, subItem.href)}
-                            className="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 rounded-xl transition-colors whitespace-nowrap"
+                            className="px-3 py-2 text-xs font-semibold text-slate-300 hover:text-[#00F0FF] hover:bg-[#00F0FF]/10 rounded-xl transition-colors whitespace-nowrap"
                           >
                             {subItem.name}
                           </a>
@@ -178,10 +202,10 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleScrollClick(e, "#contact")}
-              className="flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-slate-900 hover:bg-indigo-600 text-white text-[11px] font-bold shadow-md shadow-slate-900/5 transition-all duration-300 group"
+              className="flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-white/5 hover:bg-[#00F0FF] text-white hover:text-[#0A1128] border border-white/10 hover:border-[#00F0FF] text-[11px] font-bold shadow-md shadow-black/20 transition-all duration-300 group"
             >
               <span>Build Solution</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-cyan-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#00F0FF] group-hover:text-[#0A1128] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
 
@@ -189,7 +213,7 @@ export default function Navbar() {
           <div className="2xl:hidden flex items-center flex-shrink-0">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex items-center justify-center p-2 sm:p-2.5 rounded-full text-slate-800 hover:bg-slate-100 hover:text-indigo-600 transition-all outline-none focus:outline-none"
+              className="flex items-center justify-center p-2 sm:p-2.5 rounded-full text-white hover:bg-white/10 hover:text-[#00F0FF] transition-all outline-none focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
@@ -207,15 +231,18 @@ export default function Navbar() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="overflow-hidden 2xl:hidden w-full"
             >
-              <div className="flex flex-col gap-4 text-left pt-6 pb-2 mt-4 border-t border-slate-100 relative">
-                <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-50" />
+              <div className="flex flex-col gap-4 text-left pt-6 pb-2 mt-4 border-t border-white/10 relative">
+                <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent opacity-50" />
               
-              <div className="text-[10px] font-mono font-extrabold text-slate-400 tracking-widest flex items-center gap-2 border-b border-slate-100 pb-3 mt-1">
-                <Compass className="w-4 h-4 text-indigo-500 animate-[spin_4s_linear_infinite]" />
+              <div className="text-[10px] font-mono font-extrabold text-slate-400 tracking-widest flex items-center gap-2 border-b border-white/10 pb-3 mt-1">
+                <Compass className="w-4 h-4 text-[#00F0FF] animate-[spin_4s_linear_infinite]" />
                 <span>NAVIGATION MENU</span>
               </div>
               
-              <div className="flex flex-col gap-2 max-h-[60vh] overflow-y-auto pr-1 pb-2">
+              <div 
+                className="flex flex-col gap-2 max-h-[60vh] overflow-y-auto pr-1 pb-2 overscroll-contain"
+                data-lenis-prevent="true"
+              >
                 {navLinks.map((link) => {
                   const cleanedId = link.href.replace("#", "");
                   const isActive = activeSection === cleanedId;
@@ -225,17 +252,17 @@ export default function Navbar() {
                     return (
                       <div key={link.name} className="flex flex-col gap-1.5 mt-1 mb-1">
                         <div 
-                          className={`p-3.5 rounded-xl border transition-all flex flex-col gap-3 cursor-pointer ${
+                          className={`p-3.5 rounded-xl border transition-[background-color,border-color,color,box-shadow] duration-200 flex flex-col gap-3 cursor-pointer ${
                             isActive || isSubmenuOpen
-                              ? "border-indigo-100 bg-indigo-50/30 text-indigo-600 shadow-sm"
-                              : "border-slate-100 hover:border-slate-200 text-slate-600 hover:text-slate-900 bg-white hover:shadow-sm"
+                              ? "border-[#00F0FF]/30 bg-[#00F0FF]/10 text-[#00F0FF] shadow-sm"
+                              : "border-white/10 hover:border-white/20 text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 hover:shadow-sm"
                           }`}
                           onClick={() => setOpenSubmenu(isSubmenuOpen ? null : link.name)}
                         >
                           <div className="flex justify-between items-center px-1">
                             <span className="text-sm font-bold">{link.name}</span>
                             <div className="flex items-center gap-2">
-                              <span className="text-[9px] font-bold bg-white border border-slate-200 text-indigo-600 px-2.5 py-1 rounded-full uppercase tracking-widest shadow-sm">Categories</span>
+                              <span className="text-[9px] font-bold bg-[#0A1128] border border-white/10 text-[#00F0FF] px-2.5 py-1 rounded-full uppercase tracking-widest shadow-sm">Categories</span>
                               <svg className={`w-4 h-4 text-slate-400 transition-transform duration-300 ${isSubmenuOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                               </svg>
@@ -251,7 +278,7 @@ export default function Navbar() {
                                 exit={{ height: 0, opacity: 0 }}
                                 className="overflow-hidden"
                               >
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-slate-100/50">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-white/10">
                                   {link.submenu.map((subItem) => (
                                     <a
                                       key={subItem.name}
@@ -260,9 +287,9 @@ export default function Navbar() {
                                         e.stopPropagation();
                                         handleScrollClick(e, subItem.href);
                                       }}
-                                      className="group p-3 rounded-xl text-xs font-bold text-slate-600 hover:text-indigo-600 hover:bg-white bg-slate-100/50 transition-all duration-300 border border-transparent hover:border-indigo-100 flex items-center gap-3"
+                                      className="group p-3 rounded-xl text-xs font-bold text-slate-300 hover:text-[#00F0FF] hover:bg-[#00F0FF]/10 bg-white/5 transition-all duration-300 border border-transparent hover:border-[#00F0FF]/30 flex items-center gap-3"
                                     >
-                                      <div className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-indigo-500 group-hover:scale-125 transition-all duration-300" />
+                                      <div className="w-1.5 h-1.5 rounded-full bg-slate-400 group-hover:bg-[#00F0FF] group-hover:scale-125 transition-all duration-300" />
                                       {subItem.name}
                                     </a>
                                   ))}
@@ -280,28 +307,28 @@ export default function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={(e) => handleScrollClick(e, link.href)}
-                      className={`p-3.5 rounded-xl border text-sm font-bold text-left transition-all flex justify-between items-center ${
+                      className={`p-3.5 rounded-xl border text-sm font-bold text-left transition-[background-color,border-color,color,box-shadow,transform] duration-200 flex justify-between items-center ${
                         isActive
-                          ? "border-indigo-100 bg-indigo-50/80 text-indigo-600 shadow-sm"
-                          : "border-slate-100 hover:border-slate-200 text-slate-600 hover:text-slate-900 bg-white hover:shadow-sm hover:-translate-y-0.5"
+                          ? "border-[#00F0FF]/30 bg-[#00F0FF]/10 text-[#00F0FF] shadow-sm"
+                          : "border-white/10 hover:border-white/20 text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 hover:shadow-sm hover:-translate-y-0.5"
                       }`}
                     >
                       {link.name}
-                      {isActive && <div className="w-2 h-2 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]" />}
+                      {isActive && <div className="w-2 h-2 rounded-full bg-[#00F0FF] shadow-[0_0_8px_rgba(0,240,255,0.6)]" />}
                     </a>
                   );
                 })}
               </div>
 
-              <div className="h-[1px] bg-slate-100 my-1" />
+              <div className="h-[1px] bg-white/10 my-1" />
 
               <a
                 href="#contact"
                 onClick={(e) => handleScrollClick(e, "#contact")}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-slate-900 to-slate-800 hover:from-indigo-600 hover:to-indigo-500 text-white text-center text-xs font-bold shadow-lg shadow-slate-900/20 hover:shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all duration-300"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan hover:opacity-90 text-white text-center text-xs font-bold shadow-lg shadow-brand-blue/20 hover:shadow-brand-cyan/40 flex items-center justify-center gap-2 transition-all duration-300"
               >
                 <span>Initiate Consultation Discovery</span>
-                <Sparkles className="w-4 h-4 text-cyan-400" />
+                <Sparkles className="w-4 h-4 text-white" />
               </a>
               </div>
             </motion.div>

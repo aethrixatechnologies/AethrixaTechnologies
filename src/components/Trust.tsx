@@ -28,7 +28,7 @@ export default function Trust() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="py-12 bg-transparent border-y border-slate-200 dark:border-slate-700/40 overflow-hidden relative w-full"
+      className="py-12 bg-transparent border-y border-slate-700/40 overflow-hidden relative w-full"
     >
       {/* Background Decorative Gradient lines */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
@@ -48,7 +48,7 @@ export default function Trust() {
             return (
               <div
                 key={idx}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass-card border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-900/70 shadow-sm text-slate-700 dark:text-slate-200 min-w-[200px]"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass-card border-slate-700/50 bg-slate-900/70 shadow-sm text-slate-200 min-w-[200px]"
               >
                 <div className="w-6 h-6 rounded-lg bg-indigo-50/80 flex items-center justify-center text-brand-indigo font-bold">
                   <Icon className="w-3.5 h-3.5" />
@@ -69,7 +69,7 @@ export default function Trust() {
             return (
               <div
                 key={idx}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass-card border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-900/70 shadow-sm text-slate-700 dark:text-slate-200 min-w-[210px]"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass-card border-slate-700/50 bg-slate-900/70 shadow-sm text-slate-200 min-w-[210px]"
               >
                 <div className="w-6 h-6 rounded-lg bg-cyan-50/80 flex items-center justify-center text-cyan-500 font-bold">
                   <Icon className="w-3.5 h-3.5" />

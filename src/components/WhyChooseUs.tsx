@@ -90,42 +90,41 @@ export default function WhyChooseUs() {
       id="why-us"
       className="py-16 md:py-24 px-4 md:px-12 lg:px-24 bg-transparent relative w-full overflow-hidden"
     >
-      {/* Decorative Pastel Background light rings */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-violet-100/30 rounded-full blur-3xl pointer-events-none" />
+      {/* Decorative Pastel Background light rings removed */}
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10 w-full">
         
         {/* Left Side: Comparison analysis & text */}
         <div className="lg:col-span-5 flex flex-col gap-6 text-left">
           {/* Accent Tag */}
-          <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-white dark:bg-slate-900 mb-2 self-start shadow-sm">
+          <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-slate-900 mb-2 self-start shadow-sm">
             <Scale className="w-3.5 h-3.5 text-indigo-500 animate-pulse" />
-            <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-500 dark:text-slate-400">
+            <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-400">
               OPERATIONAL COMPARISON METRICS
             </span>
           </div>
 
-          <h2 className="font-display font-black text-3xl md:text-5xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
+          <h2 className="font-display font-black text-3xl md:text-5xl text-slate-100 tracking-tight leading-tight">
             Why Forward-thinking Brands Trust Aethrixa.
           </h2>
 
-          <p className="font-sans text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed font-medium">
+          <p className="font-sans text-slate-300 text-base md:text-lg leading-relaxed font-medium">
             We merge absolute mechanical precision with commercial startup metrics. Our code isn't just beautiful—it's engineered to maximize operational capacity and catalyze client gains.
           </p>
 
-          <p className="font-sans text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          <p className="font-sans text-slate-400 text-sm leading-relaxed">
             While basic agencies use mock code, templates, and slow servers, Aethrixa Technologies builds durable cloud structures, fine-tuned agent setups, and seamless web experiences.
           </p>
 
           {/* Quick confirmation chips list */}
-          <div className="space-y-3 mt-4 border-t border-slate-200 dark:border-slate-700/50 pt-6">
+          <div className="space-y-3 mt-4 border-t border-slate-700/50 pt-6">
             {[
               "ISO 27001 Security Standard",
               "100% Pure TypeScript Codebases",
               "Comprehensive Cloud Ownership Rights",
               "Flexible Consultations Model Setup",
             ].map((check_item, check_idx) => (
-              <div key={check_idx} className="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-300">
+              <div key={check_idx} className="flex items-center gap-2 text-xs font-bold text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
                 <span>{check_item}</span>
               </div>
@@ -138,17 +137,17 @@ export default function WhyChooseUs() {
           {reasons.map((reason) => (
             <div
               key={reason.id}
-              className="glass-card bg-white dark:bg-slate-900/80 p-5 rounded-2xl border border-white flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-sm hover:shadow-md transition-all group overflow-hidden w-full"
+              className="glass-card bg-slate-900/80 p-5 rounded-2xl border border-slate-700/50 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-sm hover:shadow-md transition-all group overflow-hidden w-full"
             >
               {/* Card Label and text detail */}
               <div className="flex-1 space-y-1.5 text-left">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-purple" />
-                  <h4 className="font-display font-bold text-slate-800 dark:text-slate-100 text-base group-hover:text-brand-purple transition-colors">
+                  <h4 className="font-display font-bold text-slate-100 text-base group-hover:text-brand-purple transition-colors">
                     {reason.title}
                   </h4>
                 </div>
-                <p className="font-sans text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+                <p className="font-sans text-slate-400 text-xs leading-relaxed">
                   {reason.desc}
                 </p>
               </div>
@@ -157,10 +156,10 @@ export default function WhyChooseUs() {
               <div className="w-full md:w-52 flex flex-col justify-center flex-shrink-0 max-w-full">
                 <div className="flex items-center justify-between text-[10px] font-bold font-mono text-slate-400 mb-1.5">
                   <span>{reason.label}</span>
-                  <span className="text-slate-800 dark:text-slate-100 font-extrabold">{reason.percent}%</span>
+                  <span className="text-slate-100 font-extrabold">{reason.percent}%</span>
                 </div>
                 {/* Frosted Bar track */}
-                <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 p-0.5 border border-slate-200 dark:border-slate-700/30 overflow-hidden shadow-inner">
+                <div className="w-full bg-slate-800 rounded-full h-2 p-0.5 border border-slate-700/30 overflow-hidden shadow-inner">
                   <motion.div
                     className={`h-full ${reason.color} rounded-full`}
                     style={{ width: `${reason.percent}%` }}

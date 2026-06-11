@@ -1,17 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 
-const componentsDir = path.join(__dirname, 'components');
+function walkDir(dir, callback) {
+  fs.readdirSync(dir).forEach(f => {
+    let dirPath = path.join(dir, f);
+    let isDirectory = fs.statSync(dirPath).isDirectory();
+    isDirectory ? walkDir(dirPath, callback) : callback(path.join(dir, f));
+  });
+}
 
-const filesToProcess = [
-  'Hero.tsx', 'Trust.tsx', 'About.tsx', 'Services.tsx', 'Process.tsx',
-  'AIShowcase.tsx', 'Portfolio.tsx', 'WhyChooseUs.tsx', 'Testimonials.tsx',
-  'TechStack.tsx', 'DigitalGrowth.tsx', 'CTA.tsx', 'Contact.tsx', 'Footer.tsx',
-  'Preloader.tsx'
-];
+const filesToProcess = [];
+walkDir(__dirname, function(filePath) {
+  if (filePath.endsWith('.tsx')) {
+    filesToProcess.push(filePath);
+  }
+});
 
-filesToProcess.forEach(file => {
-  const filePath = path.join(componentsDir, file);
+filesToProcess.forEach(filePath => {
   if (fs.existsSync(filePath)) {
     let content = fs.readFileSync(filePath, 'utf8');
 
@@ -50,7 +55,13 @@ filesToProcess.forEach(file => {
     content = content.replace(/\bhover:text-slate-900\b(?! \w+:\bhover:text-)/g, 'hover:text-slate-900 dark:hover:text-slate-100');
     content = content.replace(/\bhover:text-slate-800\b(?! \w+:\bhover:text-)/g, 'hover:text-slate-800 dark:hover:text-slate-200');
 
+    // Gradients (for App.tsx mostly)
+    content = content.replace(/\bfrom-slate-50\b(?! \w+:\bfrom-)/g, 'from-slate-50 dark:from-slate-950');
+    content = content.replace(/\bvia-indigo-50\/30\b(?! \w+:\bvia-)/g, 'via-indigo-50/30 dark:via-indigo-950/30');
+    content = content.replace(/\bto-blue-50\/40\b(?! \w+:\bto-)/g, 'to-blue-50/40 dark:to-blue-950/40');
+    content = content.replace(/\btext-slate-800\b(?! \w+:\btext-)/g, 'text-slate-800 dark:text-slate-200');
+
     fs.writeFileSync(filePath, content);
-    console.log(`Updated ${file}`);
+    console.log(`Updated ${path.basename(filePath)}`);
   }
 });

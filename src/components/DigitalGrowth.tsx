@@ -101,20 +101,20 @@ export default function DigitalGrowth() {
 
  <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col items-center">
  {/* Accent Tag */}
- <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-white mb-4 shadow-sm">
+ <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-slate-900 mb-4 shadow-sm">
  <TrendingUp className="w-3.5 h-3.5 text-indigo-500 animate-pulse" />
- <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-500">
+ <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-400">
  DIGITAL HYPER-GROWTH PLATFORM
  </span>
  </div>
 
  {/* Headline */}
- <h2 className="font-display font-black text-3xl md:text-5xl text-slate-800 tracking-tight mb-4 max-w-2xl text-center">
+ <h2 className="font-display font-black text-3xl md:text-5xl text-slate-100 tracking-tight mb-4 max-w-2xl text-center">
  Catalyze Real Traffic and Customer Acquisition Rates.
  </h2>
 
  {/* Subtext */}
- <p className="font-sans text-slate-600 text-base md:text-lg max-w-xl mb-16 text-center">
+ <p className="font-sans text-slate-300 text-base md:text-lg max-w-xl mb-16 text-center">
  We don't rely on hope. All growth routines are backed by real search intent, optimized bidding, and interactive data analysis.
  </p>
 
@@ -133,11 +133,11 @@ export default function DigitalGrowth() {
  className={`text-left p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 cursor-pointer relative group ${
  isSelected
  ?"bg-slate-900 border-slate-900 text-white shadow-xl shadow-slate-950/10 scale-102"
- :"bg-slate-50 border-slate-200 hover:border-violet-100 text-slate-700 hover:bg-white"
+ :"bg-slate-900/50 border-slate-200 hover:border-violet-100 text-slate-200 hover:bg-slate-900"
  }`}
  >
  <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
- isSelected ?"bg-white text-cyan-400" :"bg-white border text-indigo-500"
+ isSelected ?"bg-slate-900 text-cyan-400" :"bg-slate-900 border text-indigo-500"
  }`}>
  <ChanIcon className="w-5 h-5" />
  </div>
@@ -145,7 +145,7 @@ export default function DigitalGrowth() {
  <h3 className="font-display font-bold text-xs uppercase tracking-wider leading-none mb-1.5">
  {chan.id.toUpperCase()} Optimization
  </h3>
- <span className={`text-xs block font-bold leading-none ${isSelected ?"text-slate-350" :"text-slate-500"}`}>
+ <span className={`text-xs block font-bold leading-none ${isSelected ?"text-slate-350" :"text-slate-400"}`}>
  {chan.label}
  </span>
  </div>
@@ -156,7 +156,7 @@ export default function DigitalGrowth() {
  </div>
 
  {/* Right Column: Visual Spline Output and Points */}
- <div className="lg:col-span-8 glass-card border border-white/85 p-6 md:p-8 rounded-3xl shadow-xl bg-slate-50 flex flex-col justify-between min-h-[440px]">
+ <div className="lg:col-span-8 glass-card border border-slate-700/50 p-6 md:p-8 rounded-3xl shadow-xl bg-slate-900/50 flex flex-col justify-between min-h-[440px]">
  <AnimatePresence mode="wait">
  <motion.div
  key={activeChannel}
@@ -172,7 +172,7 @@ export default function DigitalGrowth() {
  <span className="font-mono text-[9px] font-extrabold text-brand-purple tracking-widest uppercase block">
  ACTIVE CHANNELS INTEGRATION
  </span>
- <h3 className="font-display font-black text-slate-800 text-xl">
+ <h3 className="font-display font-black text-slate-100 text-xl">
  {currentChannel.label}
  </h3>
  <p className="text-brand-indigo font-bold text-xs font-mono lowercase">
@@ -182,7 +182,7 @@ export default function DigitalGrowth() {
 
  <div className="space-y-3">
  {currentChannel.points.map((pt, p_idx) => (
- <div key={p_idx} className="flex items-start gap-2 text-xs font-semibold text-slate-500 text-left">
+ <div key={p_idx} className="flex items-start gap-2 text-xs font-semibold text-slate-400 text-left">
  <Sparkles className="w-3.5 h-3.5 text-indigo-500 mt-0.5 flex-shrink-0 animate-pulse" />
  <span>{pt}</span>
  </div>
@@ -190,9 +190,9 @@ export default function DigitalGrowth() {
  </div>
 
  {/* Highlight Metric */}
- <div className="border-t border-slate-200 pt-5 bg-white p-4 rounded-2xl border flex items-center justify-between">
+ <div className="border-t border-slate-700 pt-5 bg-slate-900 p-4 rounded-2xl border flex items-center justify-between">
  <div>
- <span className="block font-display font-extrabold text-2xl text-slate-900 font-mono">
+ <span className="block font-display font-extrabold text-2xl text-slate-50 font-mono">
  {currentChannel.metrics}
  </span>
  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
@@ -206,7 +206,7 @@ export default function DigitalGrowth() {
  </div>
 
  {/* SVG Live Graphic Plot */}
- <div className="w-full lg:w-[350px] bg-white border border-slate-200 p-4 sm:p-5 rounded-2xl shadow-inner flex flex-col overflow-hidden max-w-full">
+ <div className="w-full lg:w-[350px] bg-slate-900 border border-slate-700 p-4 sm:p-5 rounded-2xl shadow-inner flex flex-col overflow-hidden max-w-full">
  <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono mb-4 border-b pb-2">
  <span className="flex items-center gap-1">
  <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
@@ -239,11 +239,11 @@ export default function DigitalGrowth() {
  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 sm:w-3 bg-gradient-to-t from-sky-200 to-indigo-300 group-hover:from-indigo-400 group-hover:to-purple-500 rounded-t-full transition-all duration-500 shadow-sm"
  style={{ height: `${height * 0.85}%` }}
  >
- <div className="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-[10px] font-extrabold text-slate-700 bg-white/90 px-1 py-0.5 rounded shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
+ <div className="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-[10px] font-extrabold text-slate-200 bg-slate-900/90 px-1 py-0.5 rounded shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
  {height}%
  </div>
  </div>
- <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] sm:text-[10px] font-bold font-mono text-slate-500 group-hover:text-indigo-600 transition-colors">M0{h_idx + 1}</span>
+ <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] sm:text-[10px] font-bold font-mono text-slate-400 group-hover:text-indigo-600 transition-colors">M0{h_idx + 1}</span>
  </div>
  ))}
  </div>

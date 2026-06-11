@@ -93,7 +93,7 @@ export default function AIShowcase() {
       className="flex-1 flex flex-col h-full"
     >
       {/* Chat logs list view */}
-      <div className="flex-1 overflow-y-auto max-h-[300px] border border-indigo-50/50 bg-white dark:bg-slate-900/80 rounded-2xl p-4 mb-4 space-y-4 shadow-inner no-scrollbar">
+      <div className="flex-1 overflow-y-auto max-h-[300px] border border-indigo-50/50 bg-slate-900/80 rounded-2xl p-4 mb-4 space-y-4 shadow-inner no-scrollbar">
         {chatMessages.map((msg, index) => (
           <div
             key={index}
@@ -105,8 +105,8 @@ export default function AIShowcase() {
             <div
               className={`p-3.5 rounded-2xl text-xs font-sans leading-relaxed whitespace-pre-wrap ${
                 msg.sender === "user"
-                  ? "bg-gradient-to-tr from-indigo-600 to-indigo-700 text-white rounded-br-none shadow-md shadow-indigo-100"
-                  : "bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 text-slate-800 dark:text-slate-100 rounded-bl-none font-mono"
+                  ? "bg-gradient-to-tr from-indigo-600 to-indigo-700 text-white rounded-br-none shadow-md shadow-none"
+                  : "bg-slate-800 border border-slate-700/50 text-slate-100 rounded-bl-none font-mono"
               }`}
             >
               {msg.text}
@@ -114,7 +114,7 @@ export default function AIShowcase() {
           </div>
         ))}
         {isTyping && (
-          <div className="flex items-center gap-1 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 p-3 rounded-2xl self-start max-w-[200px]">
+          <div className="flex items-center gap-1 bg-slate-900/50 border border-slate-800 p-3 rounded-2xl self-start max-w-[200px]">
             <RefreshCw className="w-3.5 h-3.5 text-brand-purple animate-spin" />
             <span className="text-xs font-mono font-bold text-slate-400">Streaming nodes...</span>
           </div>
@@ -127,7 +127,7 @@ export default function AIShowcase() {
           <button
             key={preset}
             onClick={() => handleSendChat(preset)}
-            className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-250 text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-purple hover:border-violet-200 hover:bg-indigo-50/40 transition-all cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[10px] sm:text-xs font-bold text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 hover:bg-cyan-900/20 transition-all cursor-pointer"
             disabled={isTyping}
           >
             {preset}
@@ -148,12 +148,12 @@ export default function AIShowcase() {
           value={chatInput}
           onChange={(e) => setChatInput(e.target.value)}
           placeholder="Ask the microagent: e.g. Design structured responsive metadata outlines..."
-          className="flex-1 px-4 py-3 rounded-xl border border-slate-250 bg-white dark:bg-slate-900 text-xs font-sans text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple"
+          className="flex-1 px-4 py-3 rounded-xl border border-slate-800 bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50"
         />
         <button
           type="submit"
           disabled={isTyping}
-          className="px-5 py-3 rounded-xl bg-slate-900 border border-slate-900 text-white text-xs font-bold hover:bg-brand-purple flex items-center justify-center transition-colors cursor-pointer"
+          className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 border border-blue-500 text-white text-xs font-bold hover:from-blue-500 hover:to-indigo-500 flex items-center justify-center transition-all cursor-pointer shadow-lg shadow-blue-500/20"
         >
           <Send className="w-4 h-4" />
         </button>
@@ -169,7 +169,7 @@ export default function AIShowcase() {
       exit={{ opacity: 0 }}
       className="flex-1 flex flex-col justify-between"
     >
-      <div className="border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-inner">
+      <div className="border border-slate-700/50 bg-slate-900 rounded-2xl p-4 shadow-inner">
         <span className="text-[10px] font-bold font-mono tracking-widest text-slate-400 uppercase block mb-4">
           ROBOTIC COGNITIVE GATEWAYS (CLICK NODE TO SYNCHRONIZE PATH)
         </span>
@@ -183,7 +183,7 @@ export default function AIShowcase() {
             className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
               activeNodes.includes("trigger")
                 ? "bg-slate-900 border-slate-900 text-white shadow-lg"
-                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-400"
+                : "bg-slate-900 border-slate-700 text-slate-400"
             }`}
           >
             <div className="font-mono text-[9px] text-brand-blue mb-1 font-bold">STAGE 01_TRIGGER</div>
@@ -197,7 +197,7 @@ export default function AIShowcase() {
             className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
               activeNodes.includes("llm")
                 ? "bg-gradient-to-tr from-brand-blue/15 to-brand-purple/15 border-brand-indigo text-[#6366f1] shadow-md"
-                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-400"
+                : "bg-slate-900 border-slate-700 text-slate-400"
             }`}
           >
             <div className="font-mono text-[9px] text-brand-purple mb-1 font-bold">STAGE 02_COGNITIVE</div>
@@ -211,7 +211,7 @@ export default function AIShowcase() {
             className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
               activeNodes.includes("sync")
                 ? "bg-cyan-50 border-cyan-400 text-cyan-600 shadow-sm"
-                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-400"
+                : "bg-slate-900 border-slate-700 text-slate-400"
             }`}
           >
             <div className="font-mono text-[9px] text-cyan-500 mb-1 font-bold">STAGE 03_CONNECTOR</div>
@@ -224,8 +224,8 @@ export default function AIShowcase() {
             onClick={() => toggleNode("db")}
             className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
               activeNodes.includes("db")
-                ? "bg-slate-50 dark:bg-slate-900/50 border-indigo-600 text-indigo-700 shadow-md"
-                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-400"
+                ? "bg-slate-900/50 border-indigo-600 text-indigo-700 shadow-md"
+                : "bg-slate-900 border-slate-700 text-slate-400"
             }`}
           >
             <div className="font-mono text-[9px] text-indigo-500 mb-1 font-bold">STAGE 04_STORE</div>
@@ -236,14 +236,14 @@ export default function AIShowcase() {
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700/40">
+      <div className="mt-4 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400 bg-slate-900/50 p-4 rounded-xl border border-slate-700/40">
         <div className="flex items-center gap-1.5 font-bold">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
           <span>COGNITIVE LOGIC FLOW ACTIVE STATUS: OK</span>
         </div>
         <button
           onClick={() => setActiveNodes(["trigger", "llm", "db"])}
-          className="px-3 py-1 bg-white dark:bg-slate-900 border rounded-lg hover:border-slate-300 dark:border-slate-600 text-[10px] font-bold text-slate-600 dark:text-slate-300 flex items-center gap-1 cursor-pointer"
+          className="px-3 py-1 bg-slate-900 border rounded-lg hover:border-slate-600 text-[10px] font-bold text-slate-300 flex items-center gap-1 cursor-pointer"
         >
           <RefreshCw className="w-3 h-3 animate-spin" />
           Reset Pathway
@@ -274,8 +274,8 @@ export default function AIShowcase() {
               }}
               className={`px-3 py-1 text-[10px] font-extrabold rounded-lg font-mono tracking-tight cursor-pointer ${
                 growthScenario === "conservative"
-                  ? "bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100"
-                  : "bg-transparent text-slate-500 hover:text-slate-700 dark:text-slate-200"
+                  ? "bg-slate-700 text-slate-100"
+                  : "bg-transparent text-slate-500 hover:text-slate-200"
               }`}
             >
               CONSERVATIVE MODEL
@@ -288,7 +288,7 @@ export default function AIShowcase() {
               className={`px-3 py-1 text-[10px] font-extrabold rounded-lg font-mono tracking-tight cursor-pointer ${
                 growthScenario === "aggressive"
                   ? "bg-slate-900 text-white shadow-sm"
-                  : "bg-transparent text-slate-500 hover:text-slate-700 dark:text-slate-200"
+                  : "bg-transparent text-slate-500 hover:text-slate-200"
               }`}
             >
               AGGRESSIVE SCENARIO
@@ -298,34 +298,34 @@ export default function AIShowcase() {
 
         {/* Calculated Metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="glass-card bg-white dark:bg-slate-900 p-4 rounded-2xl text-left border">
+          <div className="glass-card bg-slate-900 p-4 rounded-2xl text-left border">
             <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
               Computed Revenue Shift
             </span>
-            <div className="text-xl font-bold font-mono text-slate-800 dark:text-slate-100 mt-1">
+            <div className="text-xl font-bold font-mono text-slate-100 mt-1">
               +{biPercentage}%
             </div>
           </div>
-          <div className="glass-card bg-white dark:bg-slate-900 p-4 rounded-2xl text-left border">
+          <div className="glass-card bg-slate-900 p-4 rounded-2xl text-left border">
             <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
               Customer LTV Metrics
             </span>
-            <div className="text-xl font-bold font-mono text-slate-800 dark:text-slate-100 mt-1">
+            <div className="text-xl font-bold font-mono text-slate-100 mt-1">
               {growthScenario === "aggressive" ? "$4,280" : "$1,640"}
             </div>
           </div>
-          <div className="glass-card bg-white dark:bg-slate-900 p-4 rounded-2xl text-left border">
+          <div className="glass-card bg-slate-900 p-4 rounded-2xl text-left border">
             <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
               ROI Acceleration speed
             </span>
-            <div className="text-xl font-bold font-mono text-slate-800 dark:text-slate-100 mt-1">
+            <div className="text-xl font-bold font-mono text-slate-100 mt-1">
               {growthScenario === "aggressive" ? "12X Rate" : "4.5X Rate"}
             </div>
           </div>
         </div>
 
         {/* Visual Growth bar diagram */}
-        <div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-3 sm:p-4 overflow-x-auto w-full overflow-y-hidden no-scrollbar">
+        <div className="bg-slate-900/50 border border-slate-700/50 rounded-2xl p-3 sm:p-4 overflow-x-auto w-full overflow-y-hidden no-scrollbar">
           <div className="h-28 relative flex items-end gap-1.5 sm:gap-3 px-1 sm:px-6 justify-between pt-4 min-w-[280px]">
             {[40, 55, 45, 60, 75, 90, 85].map((val, idx) => {
               const multiplier = growthScenario === "aggressive" ? 1.0 : 0.45;
@@ -337,7 +337,7 @@ export default function AIShowcase() {
                     animate={{ height: `${heightVal * 0.8}%` }}
                     className="absolute bottom-6 left-1/2 -translate-x-1/2 w-full rounded-t-lg bg-gradient-to-t from-cyan-400 to-indigo-500"
                   >
-                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 font-mono text-[9px] font-bold text-slate-600 dark:text-slate-300">
+                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 font-mono text-[9px] font-bold text-slate-300">
                       {heightVal}%
                     </div>
                   </motion.div>
@@ -349,7 +349,7 @@ export default function AIShowcase() {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 py-3 border-t">
+      <div className="mt-4 flex items-center justify-between text-[11px] font-mono text-slate-400 py-3 border-t">
         <span>Aethrixa Cognitive SQL analysis running...</span>
         <span className="text-brand-purple flex items-center gap-1 font-bold">
           <Sparkles className="w-3 h-3 animate-spin" />
@@ -375,18 +375,18 @@ export default function AIShowcase() {
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Header Block Section */}
         <div className="text-center flex flex-col items-center mb-16">
-          <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-white dark:bg-slate-900 mb-4 shadow-sm">
+          <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-slate-900 mb-4 shadow-sm">
             <Cpu className="w-3.5 h-3.5 text-brand-purple animate-pulse" />
-            <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-500 dark:text-slate-400">
+            <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-400">
               AETH_AGENT_LABORATORY (PROTOTYPE CORE)
             </span>
           </div>
 
-          <h2 className="font-display font-black text-3xl md:text-5xl text-slate-800 dark:text-slate-100 tracking-tight mb-4 max-w-3xl">
+          <h2 className="font-display font-black text-3xl md:text-5xl text-slate-100 tracking-tight mb-4 max-w-3xl">
             Experience Our Intelligent Systems in Action.
           </h2>
 
-          <p className="font-sans text-slate-600 dark:text-slate-300 text-base md:text-lg max-w-xl">
+          <p className="font-sans text-slate-300 text-base md:text-lg max-w-xl">
             Interact with our simulated chatbot, customize digital logic workflows, or map forecast estimates dynamically.
           </p>
         </div>
@@ -424,15 +424,15 @@ export default function AIShowcase() {
                     onClick={() => setActiveLabTab(tab.id as any)}
                     className={`text-left p-6 rounded-2xl border transition-all duration-300 flex flex-col gap-2 relative group cursor-pointer ${
                       isSelected
-                        ? "bg-slate-900 border-slate-900 text-white shadow-xl shadow-slate-900/10 dark:shadow-black/30 scale-[1.02]"
-                        : "bg-white dark:bg-slate-900/80 border-slate-200 hover:border-violet-200 text-slate-700 dark:text-slate-200 hover:bg-white dark:bg-slate-900"
+                        ? "bg-gradient-to-br from-blue-900/40 to-indigo-900/40 border-blue-500/50 text-white shadow-xl shadow-blue-900/20 scale-[1.02]"
+                        : "bg-slate-900/50 border-slate-800 hover:border-slate-700 text-slate-400 hover:bg-slate-900/80"
                     }`}
                   >
                     <div className="flex items-center gap-2">
                       <TabIcon className={`w-5 h-5 ${isSelected ? "text-cyan-400" : "text-brand-purple"}`} />
                       <span className="font-display font-bold text-sm tracking-tight">{tab.title}</span>
                     </div>
-                    <p className={`text-xs leading-relaxed ${isSelected ? "text-slate-300" : "text-slate-500 dark:text-slate-400"}`}>
+                    <p className={`text-xs leading-relaxed ${isSelected ? "text-slate-300" : "text-slate-400"}`}>
                       {tab.desc}
                     </p>
                     <ArrowRight className={`w-4 h-4 self-end transition-transform ${isSelected ? "text-cyan-400 translate-x-1" : "text-slate-300 group-hover:translate-x-1"}`} />
@@ -448,7 +448,7 @@ export default function AIShowcase() {
                         transition={{ duration: 0.3 }}
                         className="lg:hidden overflow-hidden"
                       >
-                        <div className="glass-card border border-white/60 dark:border-slate-700/60 p-5 rounded-3xl shadow-xl bg-white dark:bg-slate-900/80 flex flex-col mb-2 mt-1">
+                        <div className="glass-card border border-slate-700/60 p-5 rounded-3xl shadow-xl bg-slate-900/80 flex flex-col mb-2 mt-1">
                           {tab.id === "chat" && renderChatLab()}
                           {tab.id === "workflow" && renderWorkflowLab()}
                           {tab.id === "bi" && renderBILab()}
@@ -462,7 +462,7 @@ export default function AIShowcase() {
           </div>
 
           {/* Column B: Interactive Glass Sandbox Container (Desktop Only) */}
-          <div className="hidden lg:flex lg:col-span-8 glass-card border-white p-6 md:p-8 rounded-3xl shadow-xl bg-white dark:bg-slate-900/70 flex-col min-h-[460px]">
+          <div className="hidden lg:flex lg:col-span-8 glass-card border-slate-700/50 p-6 md:p-8 rounded-3xl shadow-xl bg-slate-900/70 flex-col min-h-[460px]">
             <AnimatePresence mode="wait">
               
               {/* Sandbox Tab: Intelligent Chat Agent */}

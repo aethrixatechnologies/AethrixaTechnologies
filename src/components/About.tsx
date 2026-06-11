@@ -114,9 +114,7 @@ export default function About() {
       id="about"
       className="py-16 md:py-24 px-4 md:px-12 lg:px-24 bg-transparent overflow-hidden relative w-full"
     >
-      {/* Decorative Radial Aurora Lights */}
-      <div className="absolute top-1/2 -right-24 w-[380px] h-[380px] bg-sky-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-96 h-96 bg-violet-100/40 rounded-full blur-3xl pointer-events-none" />
+      {/* Decorative Radial Aurora Lights removed */}
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10 w-full">
         {/* Left Side: Editorial Typography storytelling */}
@@ -134,7 +132,7 @@ export default function About() {
             </span>
           </div>
 
-          <h2 className="font-display font-black text-3xl md:text-4xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
+          <h2 className="font-display font-black text-3xl md:text-4xl text-slate-100 tracking-tight leading-tight">
             Engineering The{" "}
             <span className="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
               Future Version
@@ -142,16 +140,16 @@ export default function About() {
             Of Business With Automated Intelligence.
           </h2>
 
-          <p className="font-sans text-slate-600 dark:text-slate-300 text-base md:text-lg font-medium leading-relaxed">
+          <p className="font-sans text-slate-300 text-base md:text-lg font-medium leading-relaxed">
             Aethrixa Technologies is a world-renowned software engineering and AI solutions agency. We build and deploy innovative AI interfaces, web applications, mobile platforms, and serverless architectures designed to automate operations and catalyze digital growth.
           </p>
 
-          <p className="font-sans text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          <p className="font-sans text-slate-400 text-sm leading-relaxed">
             From cognitive bots to robust cloud applications, our mission is to eliminate operational hurdles, minimize computing costs, and empower enterprise companies to conquer market share at speed.
           </p>
 
           {/* Stats Counters Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 border-t border-slate-100 dark:border-slate-800 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 border-t border-slate-800 pt-8">
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col">
                 <span className="font-display font-extrabold text-3xl md:text-4xl text-brand-indigo font-mono">
@@ -181,24 +179,12 @@ export default function About() {
               transformStyle: "preserve-3d",
             }}
           >
-            {/* Glowing Backdrop for Image */}
-            <motion.div 
-              className="absolute inset-4 lg:inset-10 rounded-full bg-gradient-to-tr from-brand-blue/30 to-brand-purple/30 blur-2xl lg:blur-3xl z-0"
-              animate={{ 
-                scale: [1, 1.05, 1],
-                opacity: [0.6, 0.8, 0.6]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+            {/* Glowing Backdrop for Image removed */}
             
             <motion.img 
-              src="/globe.png" 
+              src="/globe-transparent-new.png" 
               alt="Global AI Infrastructure" 
-              className="w-full h-full object-contain relative z-10 mix-blend-multiply contrast-125 brightness-105 cursor-pointer transform-gpu"
+              className="w-full h-full object-contain relative z-10 cursor-pointer transform-gpu"
               animate={{ 
                 y: [0, -15, 0],
               }}

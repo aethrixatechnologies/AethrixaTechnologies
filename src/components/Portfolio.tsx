@@ -28,9 +28,6 @@ export default function Portfolio() {
       id="portfolio" 
       className="py-16 md:py-24 px-4 md:px-12 lg:px-24 bg-transparent relative w-full overflow-hidden"
     >
-      {/* Decorative Pastel Background Blobs */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-cyan-50/50 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col items-center">
         {/* Accent Tag */}
@@ -39,10 +36,10 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-white dark:bg-slate-900 mb-4 shadow-sm"
+          className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-slate-900 mb-4 shadow-sm"
         >
           <Star className="w-3.5 h-3.5 text-brand-purple fill-brand-purple/20 animate-pulse" />
-          <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-500 dark:text-slate-400">
+          <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-400">
             AETHRIXA DIGITAL PORTFOLIO
           </span>
         </motion.div>
@@ -53,7 +50,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="font-display font-black text-3xl md:text-5xl text-slate-800 dark:text-slate-100 tracking-tight mb-4 max-w-2xl text-center"
+          className="font-display font-black text-3xl md:text-5xl text-slate-100 tracking-tight mb-4 max-w-2xl text-center"
         >
           Pristine Solutions Engineered For Real Growth.
         </motion.h2>
@@ -64,21 +61,21 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="font-sans text-slate-600 dark:text-slate-300 text-base md:text-lg max-w-xl mb-12 text-center"
+          className="font-sans text-slate-300 text-base md:text-lg max-w-xl mb-12 text-center"
         >
           We pride ourselves on flawless execution. Explore our featured success stories across AI, web, and marketing domains.
         </motion.p>
 
         {/* Dynamic Category Filter Button Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 mb-16 bg-slate-100 dark:bg-slate-800/60 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-700/50">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 mb-16 bg-slate-800/60 p-1.5 rounded-2xl border border-slate-700/50">
           {filterTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveFilter(tab.id as any)}
               className={`px-4.5 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer ${
                 activeFilter === tab.id
-                  ? "bg-slate-900 text-white shadow-md shadow-slate-900/10 dark:shadow-black/30"
-                  : "text-slate-600 hover:text-slate-900 dark:hover:text-slate-100 dark:text-slate-50 hover:bg-white dark:bg-slate-900/60"
+                  ? "bg-slate-900 text-white shadow-md shadow-black/30"
+                  : "text-slate-600 hover:text-white dark:hover:text-slate-50 dark:hover:text-slate-50 hover:bg-slate-900/60"
               }`}
             >
               {tab.label}
@@ -103,20 +100,19 @@ export default function Portfolio() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.2 }}
-                  className="group rounded-3xl border border-slate-200 dark:border-slate-700/55 bg-gradient-to-b from-slate-50/50 to-white/90 p-6 flex flex-col relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-indigo-150/10 hover:border-violet-100 hover:-translate-y-1.5"
+                  className="group rounded-3xl border border-slate-700/55 bg-gradient-to-b from-slate-900/50 to-slate-950/80 p-6 flex flex-col relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/10 hover:border-indigo-500/50 hover:-translate-y-1.5"
                 >
                   <Link to={`/project/${project.id}`} className="absolute inset-0 z-20">
                     <span className="sr-only">View {project.title}</span>
                   </Link>
 
                   {/* Decorative Project vector graphic backdrop representing custom tech layout */}
-                  <div className={`w-full aspect-video rounded-2xl mb-6 bg-gradient-to-tr ${project.gradient} border border-slate-200 dark:border-slate-700/40 relative overflow-hidden p-4 flex items-center justify-center`}>
+                  <div className={`w-full aspect-video rounded-2xl mb-6 bg-gradient-to-tr ${project.gradient} border border-slate-700/40 relative overflow-hidden p-4 flex items-center justify-center`}>
                     
-                    {/* Perspective grid lines */}
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)]" />
+
 
                     {/* Glowing centralized vector logo of project */}
-                    <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900/95 border border-white shadow-xl shadow-indigo-100/10 flex items-center justify-center relative transition-transform duration-500 group-hover:scale-110">
+                    <div className="w-14 h-14 rounded-2xl bg-slate-900/95 border border-slate-700/50 shadow-xl shadow-none flex items-center justify-center relative transition-transform duration-500 group-hover:scale-110">
                       <ProjectIcon className="w-6 h-6 text-indigo-500" />
                     </div>
 
@@ -139,19 +135,19 @@ export default function Portfolio() {
                   </div>
 
                   {/* Project Headline */}
-                  <h3 className="font-display font-black text-slate-800 dark:text-slate-100 text-lg mb-2 leading-snug group-hover:text-brand-purple transition-colors relative z-10">
+                  <h3 className="font-display font-black text-slate-100 text-lg mb-2 leading-snug group-hover:text-brand-purple transition-colors relative z-10">
                     {project.title}
                   </h3>
 
                   {/* Explanatory summary text */}
-                  <p className="font-sans text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-6 flex-1 relative z-10">
+                  <p className="font-sans text-slate-400 text-xs leading-relaxed mb-6 flex-1 relative z-10">
                     {project.summary}
                   </p>
 
                   {/* Key Metrics Statistics Bar */}
-                  <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 text-left relative z-10">
+                  <div className="flex items-center justify-between border-t border-slate-800 pt-4 text-left relative z-10">
                     <div>
-                      <span className="block font-mono font-black text-slate-800 dark:text-slate-100 text-sm">
+                      <span className="block font-mono font-black text-slate-100 text-sm">
                         {project.metrics}
                       </span>
                       <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-mono">
@@ -160,7 +156,7 @@ export default function Portfolio() {
                     </div>
                     
                     {/* Action trigger button */}
-                    <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:border-slate-900 group-hover:text-white transition-all cursor-pointer">
+                    <div className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:border-slate-900 group-hover:text-white transition-all cursor-pointer">
                       <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>

@@ -135,9 +135,7 @@ export default function Contact() {
       id="contact" 
       className="py-16 md:py-24 px-4 md:px-12 lg:px-24 bg-transparent relative w-full overflow-hidden"
     >
-      {/* Background Soft decorative flares */}
-      <div className="absolute top-1/4 right-0 w-[420px] h-[420px] bg-sky-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-violet-100/40 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Soft decorative flares removed */}
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch relative z-10 w-full text-left">
         
@@ -145,41 +143,41 @@ export default function Contact() {
         <div className="lg:col-span-5 flex flex-col gap-6 justify-between select-none">
           <div className="space-y-6">
             {/* Accent Tag */}
-            <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-white dark:bg-slate-900 shadow-sm self-start">
+            <div className="flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-violet-100 bg-slate-900 shadow-sm self-start">
               <Clock className="w-3.5 h-3.5 text-indigo-500 animate-spin" />
-              <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-500 dark:text-slate-400">
+              <span className="text-[10px] font-bold font-mono tracking-wider uppercase text-slate-400">
                 AETHRIXA LEAD CONFIGURATION
               </span>
             </div>
 
-            <h2 className="font-display font-black text-3xl md:text-5xl text-slate-800 dark:text-slate-100 tracking-tight leading-tight">
+            <h2 className="font-display font-black text-3xl md:text-5xl text-slate-100 tracking-tight leading-tight">
               Let's Co-create Your Next Digital Breakthrough.
             </h2>
 
-            <p className="font-sans text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed font-semibold">
+            <p className="font-sans text-slate-300 text-sm md:text-base leading-relaxed font-semibold">
               Fill out the lead specifications to map operational requirements. Our core software engineering architects will review your blueprints.
             </p>
 
-            <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-              <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
-                <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border flex items-center justify-center text-brand-indigo shadow-sm flex-shrink-0">
+            <div className="space-y-4 pt-4 border-t border-slate-800">
+              <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/50 border border-slate-800">
+                <div className="w-10 h-10 rounded-xl bg-slate-900 border flex items-center justify-center text-brand-indigo shadow-sm flex-shrink-0">
                   <Mail className="w-4.5 h-4.5" />
                 </div>
                 <div>
                   <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Core Mail Coordinates</span>
-                  <a href="mailto:solutions@aethrixa.tech" className="text-xs font-mono font-bold text-slate-700 hover:text-brand-purple">
+                  <a href="mailto:solutions@aethrixa.tech" className="text-xs font-mono font-bold text-slate-200 hover:text-brand-purple">
                     solutions@aethrixa.tech
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
-                <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border flex items-center justify-center text-cyan-500 shadow-sm flex-shrink-0">
+              <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-900/50 border border-slate-800">
+                <div className="w-10 h-10 rounded-xl bg-slate-900 border flex items-center justify-center text-cyan-500 shadow-sm flex-shrink-0">
                   <Clock className="w-4.5 h-4.5 animate-pulse" />
                 </div>
                 <div>
                   <span className="block text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">Response SLA Latency Rate</span>
-                  <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-200">
+                  <span className="text-xs font-mono font-bold text-slate-200">
                     ~ 1.2 Hours Business SLA Limit
                   </span>
                 </div>
@@ -188,15 +186,15 @@ export default function Contact() {
           </div>
 
           {/* Quick Technical specifications verification footer */}
-          <div className="p-4 bg-indigo-50/50 border border-indigo-100 rounded-2xl flex items-center gap-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400 font-mono">
-            <ShieldCheck className="w-5 h-5 text-brand-indigo flex-shrink-0" />
+          <div className="p-4 bg-indigo-50/50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800/50 rounded-2xl flex items-center gap-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400 font-mono">
+            <ShieldCheck className="w-5 h-5 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
             <span>Encrypted Lead Pipeline v2 | ISO Standard 27001 TLS Safe Gateway</span>
           </div>
         </div>
 
         {/* Right Column Glassmorphic Contact Form Core */}
         <div className="lg:col-span-7 relative h-full">
-          <div className="glass-card bg-white dark:bg-slate-900/70 border border-white/90 p-6 md:p-8 rounded-3xl shadow-xl relative h-full flex flex-col justify-center">
+          <div className="glass-card bg-slate-900/70 border border-slate-700/50 p-6 md:p-8 rounded-3xl shadow-xl relative h-full flex flex-col justify-center">
             
             <AnimatePresence mode="wait">
               {!isSuccess ? (
@@ -220,7 +218,7 @@ export default function Contact() {
                         value={form.name}
                         onChange={handleInputChange}
                         placeholder="e.g. Marcus Thorne"
-                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-slate-900/80 text-xs font-sans text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 ${
+                        className={`w-full px-4 py-3 rounded-xl border bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 ${
                           errors.name ? "border-red-400 focus:ring-red-400" : "border-slate-205 focus:border-brand-purple focus:ring-brand-purple"
                         }`}
                       />
@@ -239,7 +237,7 @@ export default function Contact() {
                         value={form.email}
                         onChange={handleInputChange}
                         placeholder="e.g. marcus@apex.co"
-                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-slate-900/80 text-xs font-sans text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 ${
+                        className={`w-full px-4 py-3 rounded-xl border bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 ${
                           errors.email ? "border-red-400 focus:ring-red-400" : "border-slate-205 focus:border-brand-purple focus:ring-brand-purple"
                         }`}
                       />
@@ -260,7 +258,7 @@ export default function Contact() {
                         value={form.phone}
                         onChange={handleInputChange}
                         placeholder="e.g. +1 (555) 0192"
-                        className="w-full px-4 py-3 border border-slate-205 rounded-xl bg-white dark:bg-slate-900/80 text-xs font-sans text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple"
+                        className="w-full px-4 py-3 border border-slate-205 rounded-xl bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple"
                       />
                     </div>
 
@@ -276,7 +274,7 @@ export default function Contact() {
                         value={form.company}
                         onChange={handleInputChange}
                         placeholder="e.g. Apex Ledger Corp"
-                        className="w-full px-4 py-3 border border-slate-205 rounded-xl bg-white dark:bg-slate-900/80 text-xs font-sans text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple"
+                        className="w-full px-4 py-3 border border-slate-205 rounded-xl bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple"
                       />
                     </div>
                   </div>
@@ -293,7 +291,7 @@ export default function Contact() {
                       value={form.projectDetails}
                       onChange={handleInputChange}
                       placeholder="Outline your requirements: e.g. custom AI support agent stream synchronization alongside React mobile portals..."
-                      className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-slate-900/80 text-xs font-sans text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 ${
+                      className={`w-full px-4 py-3 rounded-xl border bg-slate-900/80 text-xs font-sans text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 ${
                         errors.projectDetails ? "border-red-400 focus:ring-red-400" : "border-slate-205 focus:border-brand-purple focus:ring-brand-purple"
                       }`}
                     />
@@ -314,7 +312,7 @@ export default function Contact() {
                         name="budgetRange"
                         value={form.budgetRange}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-slate-900 text-xs font-sans text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 ${
+                        className={`w-full px-4 py-3 rounded-xl border bg-slate-900 text-xs font-sans text-slate-200 focus:outline-none focus:ring-1 ${
                           errors.budgetRange ? "border-red-400 focus:ring-red-400" : "border-slate-205 focus:border-brand-purple"
                         }`}
                       >
@@ -339,7 +337,7 @@ export default function Contact() {
                         name="timeline"
                         value={form.timeline}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 rounded-xl border bg-white dark:bg-slate-900 text-xs font-sans text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 ${
+                        className={`w-full px-4 py-3 rounded-xl border bg-slate-900 text-xs font-sans text-slate-200 focus:outline-none focus:ring-1 ${
                           errors.timeline ? "border-red-400 focus:ring-red-400" : "border-slate-205 focus:border-brand-purple"
                         }`}
                       >
@@ -360,7 +358,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 rounded-xl bg-slate-900 border border-slate-900 text-white font-bold text-xs hover:bg-gradient-to-r hover:from-brand-blue hover:to-brand-purple shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                      className="w-full py-4 rounded-xl bg-gradient-to-r from-brand-blue to-brand-purple text-white font-bold text-xs shadow-lg hover:shadow-xl hover:opacity-90 flex items-center justify-center gap-2 transition-all cursor-pointer"
                     >
                       {isSubmitting ? (
                         <>
@@ -389,16 +387,16 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-1 max-w-md">
-                    <h3 className="font-display font-black text-slate-800 dark:text-slate-100 text-xl md:text-2xl">
+                    <h3 className="font-display font-black text-slate-100 text-xl md:text-2xl">
                       Blueprint Transmitted Successfully!
                     </h3>
-                    <p className="font-sans text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
-                      Thank you, <span className="font-bold text-slate-800 dark:text-slate-100">{form.name}</span>. Your technology roadmap request has bypassed secondary filters and secured direct architect synchronization.
+                    <p className="font-sans text-slate-400 text-xs leading-relaxed">
+                      Thank you, <span className="font-bold text-slate-100">{form.name}</span>. Your technology roadmap request has bypassed secondary filters and secured direct architect synchronization.
                     </p>
                   </div>
 
                   {/* Custom lead telemetry list summary */}
-                  <div className="w-full max-w-sm rounded-xl border border-dashed border-emerald-200 bg-emerald-50/20 p-4 font-mono text-[10px] text-left text-slate-600 dark:text-slate-300 leading-relaxed space-y-1 border-t">
+                  <div className="w-full max-w-sm rounded-xl border border-dashed border-emerald-200 bg-emerald-50/20 p-4 font-mono text-[10px] text-left text-slate-300 leading-relaxed space-y-1 border-t">
                     <div className="font-bold text-emerald-700 tracking-wider">SECURE TELEMETRY REGISTERED //</div>
                     <div>CLIENT COMP: {form.company || "Self Employed Core"}</div>
                     <div>BUDGET BRACKET: {form.budgetRange} scale</div>

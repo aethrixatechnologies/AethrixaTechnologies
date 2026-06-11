@@ -1,5 +1,5 @@
 import { ComponentType } from "react";
-import { Sparkles, Smartphone, Code } from "lucide-react";
+import { Sparkles, Smartphone, Code, Camera } from "lucide-react";
 
 export interface ProjectItem {
   id: string;
@@ -139,6 +139,34 @@ export const projects: ProjectItem[] = [
       "Responsive mobile-first design",
       "SEO optimized architecture"
     ]
+  },
+  {
+    id: "aruco-entry-system",
+    title: "ArUco Entry System",
+    category: "ai",
+    categoryLabel: "AI SOLUTIONS",
+    summary: "An intelligent system that detects person entry and exit using unique IDs via CCTV camera detection, automatically recording precise in and out times.",
+    metrics: "99.9%",
+    metricsLabel: "Detection Accuracy",
+    gradient: "from-indigo-100 to-purple-100/60",
+    iconName: "Camera",
+    technologies: ["Python", "OpenCV", "ArUco Markers", "AI/ML", "Database"],
+    challenge: "Organizations needed an automated, frictionless, and secure way to track employee or visitor attendance and movement without manual ID scanning or fingerprinting.",
+    solution: "We engineered an AI-powered camera detection system utilizing ArUco markers to uniquely identify individuals. It processes live CCTV feeds to automatically record 'in' and 'out' timestamps with high precision.",
+    results: [
+      { label: "Detection Accuracy", value: "99.9%" },
+      { label: "Processing Speed", value: "< 100ms" },
+      { label: "Manual Tracking", value: "Eliminated" }
+    ],
+    role: "AI & Computer Vision Engineering",
+    duration: "3 Months",
+    features: [
+      "Real-time CCTV feed processing",
+      "Unique ID detection via ArUco markers",
+      "Automated in-time and out-time logging",
+      "High accuracy tracking and reporting",
+      "Seamless database integration"
+    ]
   }
 ];
 
@@ -148,6 +176,7 @@ export const getProjectIcon = (iconName: string): ComponentType<any> => {
     case 'Sparkles': return Sparkles;
     case 'Smartphone': return Smartphone;
     case 'Code': return Code;
+    case 'Camera': return Camera;
     default: return Code;
   }
 };
