@@ -1,6 +1,6 @@
 import React, { MouseEvent } from "react";
 import { motion } from "motion/react";
-import { Cpu, Github, Linkedin, Twitter, Sparkles, Send, Network } from "lucide-react";
+import { Cpu, Instagram, Linkedin, Mail, Sparkles, Send, Network } from "lucide-react";
 
 export default function Footer() {
   const handleScrollClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -50,9 +50,9 @@ export default function Footer() {
             {/* Social connectors */}
             <div className="flex gap-2.5 pt-2">
               {[
-                { label: "Twitter", href: "https://twitter.com", icon: Twitter },
                 { label: "Linkedin", href: "https://linkedin.com", icon: Linkedin },
-                { label: "Github", href: "https://github.com", icon: Github }
+                { label: "Instagram", href: "https://www.instagram.com/aetherixatechnologies?igsh=c254cm1jbHQ3NTNo", icon: Instagram },
+                { label: "Email", href: "mailto:aethrixatechnologies@gmail.com", icon: Mail }
               ].map((soc, idx) => {
                 const IconComp = soc.icon;
                 return (
